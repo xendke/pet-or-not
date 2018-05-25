@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+import Clarifai from 'clarifai';
+import { Container, Navbar, NavbarBrand } from 'reactstrap';
+import Main from './containers/Main';
+
+import './App.css';
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.clarifai = new Clarifai.App({ // initialize the clarifai api
+      apiKey: 'bf4302d46d7142aa9befd9d831c11cec'
+    });
+  }
+
+  render() {    
+    return (
+      <div>
+        <Navbar className="mb-4" color="dark" dark expand="md">
+          <NavbarBrand href="/">Pet or Not</NavbarBrand>
+        </Navbar>
+        <Main clarifai={this.clarifai}/>
+        <footer className="footer fixed-bottom pt-3 w-100 text-light bg-dark text-center"> 
+          <p>xendke | <a href="https://www.github.com/xendke/pet-or-not">source</a></p>
+        </footer>
+      </div>
+    );
+  }
+}
+
+export default App;
