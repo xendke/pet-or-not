@@ -1,4 +1,0 @@
-import Clarifai from 'clarifai';
-
-
-
