@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import Clarifai from 'clarifai';
 import ApiResults from '../containers/ApiResults';
-import InputForm from '../components/InputForm';
+import InputForm from './InputForm';
 import Jumbo from '../components/Jumbo';
 
 
