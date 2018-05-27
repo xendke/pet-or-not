@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 
-const Results = ({ results }) => (
+const Concepts = ({ concepts }) => (
+    <Fragment>
+    <h6 className="mb-3">More in this picture:</h6>
     <ListGroup className="mx-auto mb-4 w-100">
-          { 
-            results.map( 
+        { 
+            concepts.map( 
                 (concept) => (<ListGroupItem key={concept.id}>{concept.name}</ListGroupItem>) 
             )
-          }
+        }
     </ListGroup>
+    </Fragment>
 );
 
-Results.propTypes = {
-    results: PropTypes.array.isRequired 
+Concepts.propTypes = {
+    concepts: PropTypes.array.isRequired 
     // TODO: use PropTypes.arrayOf() and shape()
 }
 
-export default Results;
+export default Concepts;

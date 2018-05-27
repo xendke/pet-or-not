@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Col, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Row, Col, Input, Button } from 'reactstrap';
 
 const InputForm = ({ handleClick }) => ( // NOTE: or ( props ) and use props.handleClick below
+    <Row>
+    <Col>
     <Form className="w-100">
         <FormGroup row>
         <Col sm="8">
@@ -14,6 +16,8 @@ const InputForm = ({ handleClick }) => ( // NOTE: or ( props ) and use props.han
         </Col>
         </FormGroup>
     </Form>
+    </Col>
+    </Row>
 );
 
 InputForm.propTypes = {
