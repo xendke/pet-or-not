@@ -1,4 +1,3 @@
-
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
@@ -7,23 +6,23 @@ import MainResult from '../components/MainResult';
 
 
 const ApiResults = ({ concepts, imgUrl }) => {
-    let isPet = (concepts) => {
+    const petKeyWords = ['pet', 'dog', 'cat'];
+    const isPet = (concepts) => {
         console.log(concepts);
         let isPet = false;
-        concepts.forEach(concept => {
-            if (concept.name === 'pet') 
+        for (let concept of concepts) {
+            if (petKeyWords.includes(concept.name)) {
                 isPet = true
                 return isPet
-        });
+            }
+        }
         return isPet;
     }
     return (
     <Fragment>
     <Row>
         <Col>
-            <MainResult imgUrl={imgUrl} isPet={
-               isPet(concepts)
-            }/>
+            <MainResult imgUrl={imgUrl} isPet={isPet(concepts)}/>
         </Col>
     </Row>
     <Row>
