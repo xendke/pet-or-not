@@ -2,6 +2,7 @@
   "name": "pet-or-not",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.xendke.io/pet-or-not",
   "dependencies": {
     "bootstrap": "^4.1.1",
     "clarifai": "^2.7.1",
