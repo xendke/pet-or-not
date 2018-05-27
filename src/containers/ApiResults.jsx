@@ -6,7 +6,7 @@ import MainResult from '../components/MainResult';
 
 
 const ApiResults = ({ concepts, imgUrl }) => {
-    const petKeyWords = ['pet', 'dog', 'cat'];
+    const petKeyWords = ['pet', 'dog', 'cat', 'fish', 'animal'];
     const isPet = (concepts) => {
         console.log(concepts);
         let isPet = false;
