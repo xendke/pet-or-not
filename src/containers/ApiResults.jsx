@@ -5,10 +5,9 @@ import Concepts from '../components/Concepts';
 import MainResult from '../components/MainResult';
 
 
-const ApiResults = ({ concepts, imgUrl }) => {
+const ApiResults = ({ concepts, imageUrl }) => {
     const petKeyWords = ['pet', 'dog', 'cat', 'fish', 'animal'];
     const isPet = (concepts) => {
-        console.log(concepts);
         let isPet = false;
         for (let concept of concepts) {
             if (petKeyWords.includes(concept.name)) {
@@ -22,7 +21,7 @@ const ApiResults = ({ concepts, imgUrl }) => {
     <Fragment>
     <Row>
         <Col>
-            <MainResult imgUrl={imgUrl} isPet={isPet(concepts)}/>
+            <MainResult imageUrl={imageUrl} isPet={isPet(concepts)}/>
         </Col>
     </Row>
     <Row>
@@ -35,7 +34,7 @@ const ApiResults = ({ concepts, imgUrl }) => {
 
 ApiResults.propTypes = {
     concepts: PropTypes.array.isRequired, 
-    imgUrl: PropTypes.string.isRequired
+    imageUrl: PropTypes.string.isRequired
     // TODO: use PropTypes.arrayOf() and shape()
 }
 

@@ -14,7 +14,9 @@ const dropzoneStyle = {
     textAlign: 'center',
 }
 
-const InputForm = ({ handleClick }) => ( // NOTE: or ( props ) and use props.handleClick below
+const InputForm = ({ handleClick, handleFileDrop }) => { // NOTE: or ( props ) and use props.handleClick below
+    
+    return (
     <Row>
     <Col>
     <Form className="w-100" onSubmit={handleClick}>
@@ -29,18 +31,32 @@ const InputForm = ({ handleClick }) => ( // NOTE: or ( props ) and use props.han
         </FormGroup>
         <FormGroup row>
         <Col sm="12">
-            <Dropzone style={dropzoneStyle} accept="image/*">
-                Choose or drop file here!
+            <Dropzone style={dropzoneStyle} accept="image/*" onDrop={handleFileDrop}>
+                {({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
+                    if (isDragActive) {
+                        return "Drop here!";
+                    }
+                    if (acceptedFiles.length > 0) {
+                        return "Ready!";
+                    }
+                    if (rejectedFiles.length > 0) {
+                        return "Try a different file.";
+                    }
+                    
+                    return "Choose or drop file here!";
+                }}
             </Dropzone>
         </Col>
         </FormGroup>
     </Form>
     </Col>
     </Row>
-);
+    )
+};
 
 InputForm.propTypes = {
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func.isRequired,
+    handleFileDrop: PropTypes.func.isRequired
 }
 
 export default InputForm;
