@@ -10,6 +10,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    console.log(process.env);
     this.clarifai = new Clarifai.App({ // initialize the clarifai api
       apiKey: apiKey
     });
@@ -19,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <Navbar className="mb-4" color="dark" dark expand="md">
-          <NavbarBrand href="/">Pet or Not</NavbarBrand>
+          <NavbarBrand href={`${process.env.PUBLIC_URL}/`}>Pet or Not</NavbarBrand>
         </Navbar>
         <Main clarifai={this.clarifai}/>
         <footer className="footer fixed-bottom pt-3 w-100 text-light bg-dark text-center"> 
