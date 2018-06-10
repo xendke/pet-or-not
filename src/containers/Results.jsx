@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import Concepts from '../components/Concepts';
-import MainResult from '../components/MainResult';
+import ConceptList from '../components/ConceptList';
+import MainResultCard from '../components/MainResultCard';
 
 
-const ApiResults = ({ concepts, imageUrl }) => {
+const Results = ({ concepts, imageUrl }) => {
     const petKeyWords = ['pet', 'dog', 'cat', 'fish', 'animal'];
     const isPet = (concepts) => {
         let isPet = false;
@@ -21,21 +21,21 @@ const ApiResults = ({ concepts, imageUrl }) => {
     <Fragment>
     <Row>
         <Col>
-            <MainResult imageUrl={imageUrl} isPet={isPet(concepts)}/>
+            <MainResultCard imageUrl={imageUrl} isPet={isPet(concepts)}/>
         </Col>
     </Row>
     <Row>
         <Col>
-            <Concepts concepts={concepts}/>
+            <ConceptList concepts={concepts}/>
         </Col>
     </Row>
     </Fragment>
 )};
 
-ApiResults.propTypes = {
+Results.propTypes = {
     concepts: PropTypes.array.isRequired, 
     imageUrl: PropTypes.string.isRequired
     // TODO: use PropTypes.arrayOf() and shape()
 }
 
-export default ApiResults;
+export default Results;

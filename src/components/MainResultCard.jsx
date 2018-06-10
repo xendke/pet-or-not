@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardImg, CardText, CardTitle, CardBody } from 'reactstrap';
 
 
-const MainResult = ({ isPet, imageUrl }) => (
+const MainResultCard = ({ isPet, imageUrl }) => (
     <Card className="mb-3">
         <CardImg top width="100%" src={imageUrl} alt="Picture Submitted" />
         <CardBody>
@@ -15,10 +15,10 @@ const MainResult = ({ isPet, imageUrl }) => (
     </Card>
 );
 
-MainResult.propTypes = {
+MainResultCard.propTypes = {
     isPet: PropTypes.bool.isRequired,
     imageUrl: PropTypes.string.isRequired
     // TODO: use PropTypes.arrayOf() and shape()
 }
 
-export default MainResult;
+export default MainResultCard;

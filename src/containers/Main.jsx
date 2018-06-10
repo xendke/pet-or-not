@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import Clarifai from 'clarifai';
-import ApiResults from '../containers/ApiResults';
+import Results from '../containers/Results';
 import InputForm from './InputForm';
 import Jumbo from '../components/Jumbo';
 
@@ -71,7 +71,7 @@ class Main extends Component {
     return (
       <Container className="mb-5">
         { this.state.results.length > 0 ? null : <Jumbo/> }
-        { this.state.results.length > 0 ? <ApiResults concepts={this.state.results} imageUrl={this.state.imageUrl}/> : null }
+        { this.state.results.length > 0 ? <Results concepts={this.state.results} imageUrl={this.state.imageUrl}/> : null }
         <InputForm handleClick={this.handleClick} handleFileDrop={this.handleFile}/>  
       </Container>
     );

@@ -10,7 +10,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log(process.env);
     this.clarifai = new Clarifai.App({ // initialize the clarifai api
       apiKey: apiKey
     });
