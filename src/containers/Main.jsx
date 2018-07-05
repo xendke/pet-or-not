@@ -37,6 +37,7 @@ class Main extends Component {
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result;
+        // remove the first 7 characters of the string as they are not part of the binaryString
         const binaryString = dataUrl.substring(dataUrl.indexOf("base64,")+7);
         
         this.setState(() => {
@@ -61,6 +62,7 @@ class Main extends Component {
     });
 
     try {
+      // grab user information, typed url is default
       let fileData = typedUrl || {base64: this.state.binaryFileString};
       let imageUrl = typedUrl || this.state.imageUrl; // to be used by img's src attr.
 
