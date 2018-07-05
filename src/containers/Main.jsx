@@ -95,7 +95,7 @@ class Main extends Component {
             <Jumbo/>
             { loading ? 
               <div>
-                <p className="text-center">Loading...</p>
+                <p className="text-center">Processing...</p>
                 <Progress animated value="100" />
               </div> : 
               <InputForm onSubmitClick={this.handleSubmitClick} onFileDrop={this.handleFileDrop}/>  
