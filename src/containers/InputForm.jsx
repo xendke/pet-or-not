@@ -4,23 +4,30 @@ import { Form, FormGroup, Row, Col, Input, Button } from 'reactstrap';
 import Dropbox from '../components/Dropbox';
 
 
-const InputForm = ({ handleClick, handleFileDrop }) => { // NOTE: or ( props ) and use props.handleClick below
+const InputForm = ({ onSubmitClick, onFileDrop }) => { // NOTE: or ( props ) and use props.onSubmitClick below
     return (
         <Row>
         <Col>
-        <Form className="w-100" onSubmit={handleClick}>
+        <Form className="w-100" onSubmit={onSubmitClick}>
         <FormGroup row>
             <Col sm="12">
-                <Dropbox handleFileDrop={handleFileDrop}/>
+                <Dropbox handleFileDrop={onFileDrop}/>
             </Col>
         </FormGroup>
         <FormGroup row>
             <Col sm="8">
                 <Input type="text" innerRef={ref => this.input = ref} placeholder="URL"/>
-                {/* ref still works! (but now we pass the value back up to parent through handleClick)*/}
+                {/* ref still works! (but now we pass the value back up to parent through onSubmitClick)*/}
             </Col>
             <Col sm="4">
-                <Button className="w-100" size="md" color="primary" onClick={e => handleClick(e, this.input.value)}>Predict!</Button>
+                <Button 
+                    className="w-100" 
+                    size="md" 
+                    color="primary" 
+                    onClick={e => onSubmitClick(e, this.input.value)}
+                >
+                    Predict!
+                </Button>
             </Col>
         </FormGroup>
         </Form>
@@ -30,8 +37,8 @@ const InputForm = ({ handleClick, handleFileDrop }) => { // NOTE: or ( props ) a
 };
 
 InputForm.propTypes = {
-    handleClick: PropTypes.func.isRequired,
-    handleFileDrop: PropTypes.func.isRequired
+    onSubmitClick: PropTypes.func.isRequired,
+    onFileDrop: PropTypes.func.isRequired
 }
 
 export default InputForm;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Progress } from 'reactstrap';
 import Clarifai from 'clarifai';
 import Results from '../containers/Results';
 import InputForm from './InputForm';
@@ -12,14 +12,26 @@ class Main extends Component {
     this.state = {
       results: [],
       imageUrl: "",
-      binaryFileString: ""
+      binaryFileString: "",
+      loading: false
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFile = this.handleFile.bind(this);
-
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.handleFileDrop = this.handleFileDrop.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
-  handleFile(acceptedFile) {
+  handleReset() {
+    this.setState(() => (
+      {
+        results: [],
+        imageUrl: "",
+        binaryFileString: "",
+        loading: false
+      }
+    ));
+  }
+
+  handleFileDrop(acceptedFile) {
     if (acceptedFile.length === 1) {    
       const file = acceptedFile[0];
       const reader = new FileReader();
@@ -38,12 +50,15 @@ class Main extends Component {
     }
   }
 
-  async handleClick(e, typedUrl) {
+  async handleSubmitClick(e, typedUrl) {
     e.preventDefault();
     const { clarifai } = this.props;
 
     // stop if there is no information to send to api
     if(!typedUrl && !this.state.binaryFileString) return
+    this.setState(() => {
+      return {loading: true}
+    });
 
     try {
       let fileData = typedUrl || {base64: this.state.binaryFileString};
@@ -55,11 +70,20 @@ class Main extends Component {
       this.setState((prevState, props) => {
         return {
           results: concepts,
-          imageUrl: imageUrl
+          imageUrl: imageUrl,
+          loading: false
         }
       });
     } catch(e) {
       alert("Error. Try a different image or url.");
+      this.setState(() => (
+        {
+          results: [],
+          imageUrl: "",
+          binaryFileString: "",
+          loading: false
+        }
+      ));
     }
   }
 
@@ -68,11 +92,22 @@ class Main extends Component {
   }
 
   render() {
+    const { results, loading, imageUrl, handleReset } = this.state;
     return (
       <Container className="mb-5">
-        { this.state.results.length > 0 ? null : <Jumbo/> }
-        { this.state.results.length > 0 ? <Results concepts={this.state.results} imageUrl={this.state.imageUrl}/> : null }
-        <InputForm handleClick={this.handleClick} handleFileDrop={this.handleFile}/>  
+        { results.length > 0 ? 
+        <Results concepts={results} imageUrl={imageUrl} onClickReset={handleReset}/> : 
+          <div>
+            <Jumbo/>
+            { loading ? 
+              <div>
+                <p className="text-center">Loading...</p>
+                <Progress animated value="100" />
+              </div> : 
+              <InputForm onSubmitClick={this.handleSubmitClick} onFileDrop={this.handleFileDrop}/>  
+            }
+          </div>
+        }
       </Container>
     );
   }
