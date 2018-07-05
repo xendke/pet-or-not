@@ -10,7 +10,7 @@ const Jumbo = ({ results }) => (
         This web app aims to demonstrate how impressive modern image recognition can be.
         </p>
         <p className="">
-        Start by pasting your pet's picture link address below.
+        Start by choosing a picture or pasting a link below!
         </p>
     </Jumbotron>
 );
