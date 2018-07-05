@@ -21,7 +21,6 @@ class Main extends Component {
   }
 
   handleReset() {
-    console.log("test");
     this.setState(() => (
       {
         results: [],
