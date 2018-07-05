@@ -21,6 +21,7 @@ class Main extends Component {
   }
 
   handleReset() {
+    console.log("test");
     this.setState(() => (
       {
         results: [],
@@ -76,14 +77,7 @@ class Main extends Component {
       });
     } catch(e) {
       alert("Error. Try a different image or url.");
-      this.setState(() => (
-        {
-          results: [],
-          imageUrl: "",
-          binaryFileString: "",
-          loading: false
-        }
-      ));
+      this.handleReset();
     }
   }
 
@@ -92,11 +86,11 @@ class Main extends Component {
   }
 
   render() {
-    const { results, loading, imageUrl, handleReset } = this.state;
+    const { results, loading, imageUrl } = this.state;
     return (
       <Container className="mb-5">
         { results.length > 0 ? 
-        <Results concepts={results} imageUrl={imageUrl} onClickReset={handleReset}/> : 
+        <Results concepts={results} imageUrl={imageUrl} onResetClick={this.handleReset}/> : 
           <div>
             <Jumbo/>
             { loading ? 

@@ -5,7 +5,7 @@ import ConceptList from '../components/ConceptList';
 import MainResultCard from '../components/MainResultCard';
 
 
-const Results = ({ concepts, imageUrl }) => {
+const Results = ({ concepts, imageUrl, onResetClick }) => {
     const petKeyWords = ['pet', 'dog', 'cat', 'fish', 'animal'];
     const isPet = (concepts) => {
         let isPet = false;
@@ -21,7 +21,7 @@ const Results = ({ concepts, imageUrl }) => {
     <Fragment>
     <Row>
         <Col>
-            <MainResultCard imageUrl={imageUrl} isPet={isPet(concepts)}/>
+            <MainResultCard onResetClick={onResetClick} imageUrl={imageUrl} isPet={isPet(concepts)}/>
         </Col>
     </Row>
     <Row>
@@ -34,7 +34,8 @@ const Results = ({ concepts, imageUrl }) => {
 
 Results.propTypes = {
     concepts: PropTypes.array.isRequired, 
-    imageUrl: PropTypes.string.isRequired
+    imageUrl: PropTypes.string.isRequired,
+    onResetClick: PropTypes.func.isRequired
     // TODO: use PropTypes.arrayOf() and shape()
 }
 
