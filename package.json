@@ -4,13 +4,13 @@
   "private": true,
   "homepage": "https://www.xendke.io/pet-or-not",
   "dependencies": {
-    "bootstrap": "^4.1.1",
-    "clarifai": "^2.7.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-dropzone": "^4.2.10",
+    "bootstrap": "^4.3.1",
+    "clarifai": "^2.9.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-dropzone": "^4.3.0",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.0.1"
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
