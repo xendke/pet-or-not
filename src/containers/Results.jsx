@@ -20,11 +20,9 @@ const Results = ({ concepts, imageUrl, onResetClick }) => {
     return (
     <Fragment>
     <Row>
-        <Col>
+        <Col sm="5">
             <MainResultCard onResetClick={onResetClick} imageUrl={imageUrl} isPet={isPet(concepts)}/>
         </Col>
-    </Row>
-    <Row>
         <Col>
             <ConceptList concepts={concepts}/>
         </Col>

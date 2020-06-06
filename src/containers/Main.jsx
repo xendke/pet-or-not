@@ -93,13 +93,16 @@ class Main extends Component {
         { results.length > 0 ? 
         <Results concepts={results} imageUrl={imageUrl} onResetClick={this.handleReset}/> : 
           <div>
-            <Jumbo/>
             { loading ? 
               <div>
                 <p className="text-center">Processing...</p>
                 <Progress animated value="100" />
-              </div> : 
-              <InputForm onSubmitClick={this.handleSubmitClick} onFileDrop={this.handleFileDrop}/>  
+              </div> : (
+                <>
+                  <Jumbo/>
+                  <InputForm onSubmitClick={this.handleSubmitClick} onFileDrop={this.handleFileDrop}/>
+                </>
+              )
             }
           </div>
         }

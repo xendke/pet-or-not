@@ -8,9 +8,8 @@ const MainResultCard = ({ isPet, imageUrl, onResetClick }) => (
         <CardImg top width="100%" src={imageUrl} alt="Picture Submitted" />
         <CardBody>
           <CardTitle>{isPet ? "Pet detected!" : "No pet detected!"}</CardTitle>
-          {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
           <CardText>Keep in mind that the results are affected by image quality.</CardText>
-          <Button onClick={onResetClick}>Try Again</Button>
+          <Button onClick={onResetClick}>Try a Different Image</Button>
         </CardBody>
     </Card>
 );
