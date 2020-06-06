@@ -1,6 +1,5 @@
-import React from 'react';
-import Dropzone from 'react-dropzone';
-
+import React, {useCallback} from 'react'
+import {useDropzone} from 'react-dropzone'
 
 const dropzoneStyle = {
     width: '100%',
@@ -13,21 +12,22 @@ const dropzoneStyle = {
     textAlign: 'center',
 }
 
-const Jumbo = ({ handleFileDrop }) => (
-    <Dropzone style={dropzoneStyle} accept="image/*" onDrop={handleFileDrop}>
-        {({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
-            if (isDragActive) {
-                return "Drop here!";
+const FileDropzone = ({ handleFileDrop }) => {
+    const onDrop = useCallback(handleFileDrop, [])
+    
+    const {getRootProps, getInputProps, isDragActive, acceptedFiles} = useDropzone({onDrop})
+
+    return (
+        <div {...getRootProps()} style={dropzoneStyle}>
+            <input {...getInputProps()} />
+            {
+                acceptedFiles.length > 0
+                ? <p>Ready! Click the 'Predict!' button!</p> 
+                : isDragActive ? <p>Drop the files here ...</p> 
+                : <p>Drag 'n' drop your image here, or click to select files</p>
             }
-            if (acceptedFiles.length > 0) {
-                return "Ready!";
-            }
-            if (rejectedFiles.length > 0) {
-                return "Try a different file.";
-            }
-            
-            return "Choose or drop file here!";
-        }}
-    </Dropzone>
-);
-export default Jumbo;
+        </div>
+    )
+}
+
+export default FileDropzone;
